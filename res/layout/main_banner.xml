@@ -9,7 +9,6 @@
         android:id="@+id/banner"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:default_image="@mipmap/loading2"
         app:indicator_drawable_selected="@drawable/selected_radius"
         app:indicator_drawable_unselected="@drawable/unselected_radius"
         app:indicator_height="8dp"

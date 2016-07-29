@@ -3,6 +3,7 @@ package com.lihao.haogenews.views;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.util.Log;
 import android.view.View;
 import android.support.design.widget.NavigationView;
@@ -25,6 +26,8 @@ public class MainActivity extends AppCompatActivity
     private DrawerLayout drawer;
     private long firstTime = 0L;
     private FrameLayout mFrameLayout;
+    private SwipeRefreshLayout sr;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,11 +35,16 @@ public class MainActivity extends AppCompatActivity
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_main);
         initViews();
+        loadMainFragment();
 
 
     }
 
-    public void initViews(){
+    private void loadMainFragment() {
+        getSupportFragmentManager().beginTransaction().replace(R.id.fl_content, new MainFragment()).commit();
+    }
+
+    public void initViews() {
 
         mFrameLayout = (FrameLayout) findViewById(R.id.fl_content);
 
@@ -61,6 +69,20 @@ public class MainActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        sr = (SwipeRefreshLayout) findViewById(R.id.sr);
+        sr.setColorSchemeResources(R.color.colorPrimary, R.color.colorAccent);
+        sr.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                loadMainFragment();
+                sr.setRefreshing(false);
+            }
+        });
+    }
+
+    public void setSwipeEnable(boolean enable){
+        sr.setEnabled(enable);
     }
 
     @Override
