@@ -44,6 +44,10 @@ public class MainActivity extends AppCompatActivity
         getSupportFragmentManager().beginTransaction().replace(R.id.fl_content, new MainFragment()).commit();
     }
 
+    private void loadLolNewsFragment() {
+        getSupportFragmentManager().beginTransaction().replace(R.id.fl_content,new LoLFragment()).commit();
+    }
+
     public void initViews() {
 
         mFrameLayout = (FrameLayout) findViewById(R.id.fl_content);
@@ -138,8 +142,10 @@ public class MainActivity extends AppCompatActivity
 
         if (id == R.id.nav_camera) {
             Log.d(Constants.APP_NAME, "第一个模块!");
+            loadMainFragment();
         } else if (id == R.id.nav_gallery) {
             Log.d(Constants.APP_NAME, "第二个模块!");
+            loadLolNewsFragment();
         } else if (id == R.id.nav_slideshow) {
             Log.d(Constants.APP_NAME, "第三个模块!");
         } else if (id == R.id.nav_manage) {
@@ -148,6 +154,8 @@ public class MainActivity extends AppCompatActivity
             Log.d(Constants.APP_NAME, "第五个模块!");
         } else if (id == R.id.nav_send) {
             Log.d(Constants.APP_NAME, "第六个模块!");
+        }else if (id == R.id.nav_other) {
+            Log.d(Constants.APP_NAME, "第七个模块!");
         }
 
         drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
