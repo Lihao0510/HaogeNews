@@ -35,9 +35,7 @@ public class MainActivity extends AppCompatActivity
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_main);
         initViews();
-        loadMainFragment();
-
-
+        loadLolNewsFragment();
     }
 
     private void loadMainFragment() {
@@ -45,7 +43,7 @@ public class MainActivity extends AppCompatActivity
     }
 
     private void loadLolNewsFragment() {
-        getSupportFragmentManager().beginTransaction().replace(R.id.fl_content,new LoLFragment()).commit();
+        getSupportFragmentManager().beginTransaction().replace(R.id.fl_content, new LoLFragment()).commit();
     }
 
     public void initViews() {
@@ -85,7 +83,7 @@ public class MainActivity extends AppCompatActivity
         });
     }
 
-    public void setSwipeEnable(boolean enable){
+    public void setSwipeEnable(boolean enable) {
         sr.setEnabled(enable);
     }
 
@@ -154,7 +152,7 @@ public class MainActivity extends AppCompatActivity
             Log.d(Constants.APP_NAME, "第五个模块!");
         } else if (id == R.id.nav_send) {
             Log.d(Constants.APP_NAME, "第六个模块!");
-        }else if (id == R.id.nav_other) {
+        } else if (id == R.id.nav_other) {
             Log.d(Constants.APP_NAME, "第七个模块!");
         }
 

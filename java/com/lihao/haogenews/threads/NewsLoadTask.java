@@ -41,6 +41,9 @@ public class NewsLoadTask extends AsyncTask<String,Void,String> {
             doc.getElementsByTag("footer").remove();
             doc.getElementsByAttributeValue("class","channel-col").remove();
             doc.getElementsByAttributeValue("id","lol-ad").remove();
+            doc.getElementsByAttributeValue("class","m-footer").remove();
+            doc.getElementsByAttributeValue("class","banner_bottom").remove();
+
             sb.append(doc);
         } catch (IOException e) {
             e.printStackTrace();
