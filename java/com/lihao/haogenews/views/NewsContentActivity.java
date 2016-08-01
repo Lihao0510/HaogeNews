@@ -7,8 +7,10 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
 import android.view.Window;
+import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
@@ -16,6 +18,7 @@ import android.widget.Toast;
 
 import com.lihao.haogenews.R;
 import com.lihao.haogenews.threads.NewsLoadTask;
+import com.lihao.haogenews.utils.NetworkUtil;
 
 /**
  * Created by Administrator on 2016/7/30.
@@ -50,15 +53,13 @@ public class NewsContentActivity extends AppCompatActivity {
         Intent intent = getIntent();
         url = intent.getStringExtra("url");
         Log.d("Lihao", url);
-        if (url.contains("http://lol.duowan.cn")||url.contains("http://bbs.duowan.com")) {
+        if (url.contains("http://lol.duowan.cn") || url.contains("http://bbs.duowan.com")) {
             NewsLoadTask loadTast = new NewsLoadTask(this, newsWebView, url);
             loadTast.execute(url);
-            getSupportActionBar().setTitle("LOL最新资讯");
-            Log.d("Lihao","Title" + newsWebView.getTitle());
+            Log.d("Lihao", "Title" + newsWebView.getTitle());
         } else {
             newsWebView.loadUrl(url);
-            Log.d("Lihao","Title" + newsWebView.getTitle());
-            getSupportActionBar().setTitle("LOL画廊");
+            Log.d("Lihao", "Title" + newsWebView.getTitle());
 
         }
 
@@ -69,7 +70,24 @@ public class NewsContentActivity extends AppCompatActivity {
         newsWebView = (WebView) findViewById(R.id.news_webview);
         WebSettings settings = newsWebView.getSettings();
         settings.setJavaScriptEnabled(true);
-        newsWebView.setWebViewClient(new WebViewClient());
+        newsWebView.setWebChromeClient(new WebChromeClient() {
+            @Override
+            public void onReceivedTitle(WebView view, String title) {
+                super.onReceivedTitle(view, title);
+                getSupportActionBar().setTitle(title);
+            }
+        });
+        newsWebView.setWebViewClient(new WebViewClient() {
+
+            @Override
+            public boolean shouldOverrideUrlLoading(WebView view, String url) {
+
+                Intent intent = new Intent(NewsContentActivity.this, NewsContentActivity.class);
+                intent.putExtra("url", url);
+                startActivity(intent);
+                return true;
+            }
+        });
         settings.setLayoutAlgorithm(WebSettings.LayoutAlgorithm.SINGLE_COLUMN);
     }
 }
