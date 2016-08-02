@@ -46,6 +46,10 @@ public class MainActivity extends AppCompatActivity
         getSupportFragmentManager().beginTransaction().replace(R.id.fl_content, new LoLFragment()).commit();
     }
 
+    private void loadPicFragment() {
+        getSupportFragmentManager().beginTransaction().replace(R.id.fl_content, new PicFragment()).commit();
+    }
+
     public void initViews() {
 
         mFrameLayout = (FrameLayout) findViewById(R.id.fl_content);
@@ -146,6 +150,7 @@ public class MainActivity extends AppCompatActivity
             loadLolNewsFragment();
         } else if (id == R.id.nav_slideshow) {
             Log.d(Constants.APP_NAME, "第三个模块!");
+            loadPicFragment();
         } else if (id == R.id.nav_manage) {
             Log.d(Constants.APP_NAME, "第四个模块!");
         } else if (id == R.id.nav_share) {

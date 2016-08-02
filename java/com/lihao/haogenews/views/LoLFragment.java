@@ -11,6 +11,7 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
 import com.lihao.haogenews.R;
+import com.lihao.haogenews.utils.Constants;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -50,7 +51,7 @@ public class LoLFragment extends BaseFragment {
             }
 
         });
-        mWebView.loadUrl("http://lolapp.duowan.com/index.php?r=news/index&menu=%E9%87%8D%E7%82%B9");
+        mWebView.loadUrl(Constants.LOL_BASE_URL);
     }
 
 

@@ -18,6 +18,7 @@ import android.widget.Toast;
 
 import com.lihao.haogenews.R;
 import com.lihao.haogenews.threads.NewsLoadTask;
+import com.lihao.haogenews.utils.Constants;
 import com.lihao.haogenews.utils.NetworkUtil;
 
 /**
@@ -53,7 +54,7 @@ public class NewsContentActivity extends AppCompatActivity {
         Intent intent = getIntent();
         url = intent.getStringExtra("url");
         Log.d("Lihao", url);
-        if (url.contains("http://lol.duowan.cn") || url.contains("http://bbs.duowan.com")) {
+        if (url.contains(Constants.LOL_NEWS_BEGIN) || url.contains(Constants.LOL_BBS_BEGIN)) {
             NewsLoadTask loadTast = new NewsLoadTask(this, newsWebView, url);
             loadTast.execute(url);
             Log.d("Lihao", "Title" + newsWebView.getTitle());
