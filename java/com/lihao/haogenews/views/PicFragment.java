@@ -71,7 +71,7 @@ public class PicFragment extends BaseFragment {
                     JSONArray picArray = response.getJSONArray("data");
                     for (int i = 0; i < picArray.length(); i++) {
                         JSONObject picObj = picArray.getJSONObject(i);
-                        mList.add(new PicBean(picObj.getString("coverUrl"), picObj.getString("coverWidth"), picObj.getString("coverHeight"), picObj.getString("galleryId")));
+                        mList.add(new PicBean(picObj.getString("coverUrl"), picObj.getString("coverWidth"), picObj.getString("coverHeight"), picObj.getString("galleryId"), picObj.getString("title")));
                         initAdapter();
                     }
                 } catch (JSONException e) {
