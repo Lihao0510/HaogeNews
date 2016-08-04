@@ -1,6 +1,7 @@
 package com.lihao.haogenews;
 
 import android.app.Application;
+import android.util.Log;
 
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.Volley;
@@ -19,6 +20,8 @@ public class MyApplication extends Application {
     }
 
     public static RequestQueue getVolleyQueue() {
+        Log.d("Lihao",mRequestQueue.toString());
         return mRequestQueue;
     }
+
 }

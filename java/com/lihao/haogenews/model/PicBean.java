@@ -32,4 +32,9 @@ public class PicBean {
     public int getId() {
         return id;
     }
+
+    @Override
+    public String toString() {
+        return "url:" + url + "; id:" + id;
+    }
 }
