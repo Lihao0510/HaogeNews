@@ -1,9 +1,11 @@
 package com.lihao.haogenews.views;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.v7.app.AlertDialog;
 import android.util.Log;
 import android.view.View;
 import android.support.design.widget.NavigationView;
@@ -48,6 +50,14 @@ public class MainActivity extends AppCompatActivity
 
     private void loadPicFragment() {
         getSupportFragmentManager().beginTransaction().replace(R.id.fl_content, new PicFragment()).commit();
+    }
+
+    private void loadJiongtuFragment() {
+        getSupportFragmentManager().beginTransaction().replace(R.id.fl_content, new JiongtuFragment()).commit();
+    }
+
+    private void loadWallPaperFragment() {
+        getSupportFragmentManager().beginTransaction().replace(R.id.fl_content, new WallPaperFragment()).commit();
     }
 
     public void initViews() {
@@ -125,11 +135,23 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
+        if (id == R.id.action_warning) {
             Log.d(Constants.APP_NAME, "设置!");
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setTitle("作者 : 李昊");
+            builder.setMessage("QQ:591353643\n" +
+                    "邮箱:lihao19910510@sina.com\n" +
+                    "本程序仅供学习交流\n" +
+                    "所使用资源均来自互联网\n" +
+                    "若本程序侵犯了您的权益\n" +
+                    "请联系本人,我会立刻修改相关内容");
+            builder.setPositiveButton("确定", null);
+            builder.show();
             return true;
-        } else if (id == R.id.action_warning) {
+        } else if (id == R.id.action_settings) {
             Log.d(Constants.APP_NAME, "其他!");
+            Intent intent = new Intent(this, SettingActivity.class);
+            startActivity(intent);
             return true;
         }
 
@@ -145,23 +167,29 @@ public class MainActivity extends AppCompatActivity
         if (id == R.id.nav_camera) {
             Log.d(Constants.APP_NAME, "第一个模块!");
             loadMainFragment();
+            getSupportActionBar().setTitle("今日头条");
         } else if (id == R.id.nav_gallery) {
             Log.d(Constants.APP_NAME, "第二个模块!");
             loadLolNewsFragment();
+            getSupportActionBar().setTitle("LOL新闻");
         } else if (id == R.id.nav_slideshow) {
             Log.d(Constants.APP_NAME, "第三个模块!");
             loadPicFragment();
+            getSupportActionBar().setTitle("COS画廊");
         } else if (id == R.id.nav_manage) {
             Log.d(Constants.APP_NAME, "第四个模块!");
+            loadJiongtuFragment();
+            getSupportActionBar().setTitle("LOL囧图");
         } else if (id == R.id.nav_share) {
             Log.d(Constants.APP_NAME, "第五个模块!");
+            loadWallPaperFragment();
+            getSupportActionBar().setTitle("精美壁纸");
         } else if (id == R.id.nav_send) {
             Log.d(Constants.APP_NAME, "第六个模块!");
         } else if (id == R.id.nav_other) {
             Log.d(Constants.APP_NAME, "第七个模块!");
         }
 
-        drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }

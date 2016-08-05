@@ -51,7 +51,7 @@ public class PicAdapter extends RecyclerView.Adapter<PicAdapter.MyViewHolder> {
         int height = mList.get(position).getHeight();
         holder.textView.setText(mList.get(position).getTitle());
         Glide.with(mContext).load(mList.get(position).getUrl()).override(mWidth, mWidth * height / width).dontAnimate().
-                fitCenter().into(holder.imageView);
+                fitCenter().placeholder(R.drawable.loading).into(holder.imageView);
         holder.imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

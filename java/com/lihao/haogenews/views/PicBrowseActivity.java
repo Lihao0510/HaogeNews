@@ -28,7 +28,6 @@ public class PicBrowseActivity extends AppCompatActivity implements PicActivityP
     private int picId;
     private String url;
     private String title;
-    private List<String> imgUrlsList;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -52,7 +51,6 @@ public class PicBrowseActivity extends AppCompatActivity implements PicActivityP
         Log.d("Lihao",url);
         Log.d("Lihao",title);
         mTitle.setText(title);
-        imgUrlsList = new ArrayList<>();
         PicloadTask task = new PicloadTask(this);
         task.execute(url);
     }

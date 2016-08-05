@@ -32,7 +32,7 @@ import java.util.List;
 /**
  * Created by Administrator on 2016/8/2.
  */
-public class PicFragment extends BaseFragment {
+public class WallPaperFragment extends BaseFragment {
 
     private RecyclerView mRecyclerView;
     private PicAdapter mAdapter;
@@ -91,7 +91,7 @@ public class PicFragment extends BaseFragment {
     private void addData() {
         Log.d("Lihao", "addData");
 
-        JsonObjectRequest picRequest = new JsonObjectRequest(Request.Method.GET, Constants.PIC_CATEGORY_URL + pageCount, null, new Response.Listener<JSONObject>() {
+        JsonObjectRequest picRequest = new JsonObjectRequest(Request.Method.GET, Constants.WALLPAPER_URL + pageCount, null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
                 try {
@@ -123,7 +123,7 @@ public class PicFragment extends BaseFragment {
     protected void initData() {
         Log.d("Lihao", "initData");
 
-        JsonObjectRequest picRequest = new JsonObjectRequest(Request.Method.GET, Constants.PIC_CATEGORY_URL + pageCount, null, new Response.Listener<JSONObject>() {
+        JsonObjectRequest picRequest = new JsonObjectRequest(Request.Method.GET, Constants.WALLPAPER_URL + pageCount, null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
                 try {

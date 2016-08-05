@@ -14,8 +14,7 @@
             android:id="@+id/pic_img"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:scaleType="fitCenter"
-            android:src="@mipmap/ic_launcher" />
+            android:scaleType="fitCenter" />
 
         <TextView
             android:id="@+id/pic_title"
