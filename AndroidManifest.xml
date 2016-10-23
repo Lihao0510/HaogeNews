@@ -14,6 +14,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme.AppBarOverlay">
         <activity
+            android:name=".views.NewsActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
             android:name=".views.SettingActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
@@ -34,6 +37,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <service
+            android:name=".service.DownloadService"
+            android:exported="false" />
     </application>
 
 </manifest>

@@ -3,6 +3,8 @@ package com.lihao.haogenews.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import com.lihao.haogenews.utils.ArrayUtil;
+
 /**
  * Created by Administrator on 2016/7/29.
  */
@@ -10,16 +12,22 @@ public class NewsBean implements Parcelable {
 
     public String title;
     public String picUrl;
-    public String author;
+    public String url;
+    public String content;
+
+    public String getContent() {
+        return content;
+    }
 
     public NewsBean() {
 
     }
 
-    public NewsBean(String title, String picUrl, String author) {
+    public NewsBean(String title, String picUrl, String url, String content) {
         this.title = title;
         this.picUrl = picUrl;
-        this.author = author;
+        this.url = ArrayUtil.getSubUrl(url);
+        this.content = content;
     }
 
     public String getTitle() {
@@ -30,13 +38,13 @@ public class NewsBean implements Parcelable {
         return picUrl;
     }
 
-    public String getAuthor() {
-        return author;
+    public String getUrl() {
+        return url;
     }
 
     @Override
     public String toString() {
-        return "Title:" + title + "; Author:" + author;
+        return "Title:" + title + "; Url:" + url;
     }
 
     @Override
@@ -47,7 +55,7 @@ public class NewsBean implements Parcelable {
     @Override
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeString(title);
-        dest.writeString(author);
+        dest.writeString(url);
         dest.writeString(picUrl);
     }
 
@@ -57,7 +65,7 @@ public class NewsBean implements Parcelable {
         public NewsBean createFromParcel(Parcel source) {
             NewsBean newsBean = new NewsBean();
             newsBean.title = source.readString();
-            newsBean.author = source.readString();
+            newsBean.url = source.readString();
             newsBean.picUrl = source.readString();
             return newsBean;
         }

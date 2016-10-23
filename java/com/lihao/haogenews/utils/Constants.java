@@ -13,5 +13,7 @@ public class Constants {
     public static final String PIC_CATEGORY_URL = "http://box.dwstatic.com/apiAlbum.php?action=l&albumsTag=beautifulWoman&p=";
     public static final String JIONGTU_URL = "http://box.dwstatic.com/apiAlbum.php?action=l&albumsTag=jiongTu&p=";
     public static final String WALLPAPER_URL = "http://box.dwstatic.com/apiAlbum.php?action=l&albumsTag=wallpaper&p=";
+    public static final String MAIN_NEWS_URL = "http://box.dwstatic.com/apiNewsList.php?action=l&newsTag=headlineNews&p=";
+    public static final String DUOWAN_UTL = "http://lol.duowan.com/";
 
 }

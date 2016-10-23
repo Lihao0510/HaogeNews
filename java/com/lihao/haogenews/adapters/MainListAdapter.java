@@ -1,7 +1,6 @@
 package com.lihao.haogenews.adapters;
 
 import android.content.Context;
-import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,6 +8,7 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.lihao.haogenews.R;
 import com.lihao.haogenews.model.NewsBean;
 
@@ -62,7 +62,8 @@ public class MainListAdapter extends BaseAdapter {
             viewHolder = (ViewHolder) convertView.getTag();
         }
         viewHolder.newsTitle.setText(mList.get(position).getTitle());
-        viewHolder.newsAuthor.setText(mList.get(position).getAuthor());
+        viewHolder.newsAuthor.setText(mList.get(position).getContent());
+        Glide.with(mContext).load(mList.get(position).getPicUrl()).placeholder(R.drawable.loading).into(viewHolder.newsImage);
 
         return convertView;
     }

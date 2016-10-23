@@ -14,4 +14,9 @@ public class ArrayUtil {
         }
         return max;
     }
+
+    public static String getSubUrl(String url) {
+        String[] line = url.split("&");
+        return line[0];
+    }
 }
